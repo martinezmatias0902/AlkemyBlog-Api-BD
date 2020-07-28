@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `blog-post`
 --
 
+
 CREATE TABLE `blog-post` (
   `id` int(10) NOT NULL,
   `title` text NOT NULL,
