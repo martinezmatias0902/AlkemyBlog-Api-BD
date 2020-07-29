@@ -1,25 +1,16 @@
 //Code by Martinez Matias
-const Sequelize = require('sequelize');
 
-//Crear ruta a la base de datos
+// BD connection
+const db_data = require('./bdConnectionData');
+const Sequelize   = require('sequelize');
 
-const host = 'localhost';
-const database_name = 'AlkemyBlog';
-const user = 'root';
-const password = '';
-const port = '3306';
-
-//BD Connection
-
-const sequelize = new Sequelize('mysql://' + user + ':' + password + '@' + host + ':' + port + '/' + database_name); 
-
-sequelize
-    .authenticate()
-    .then(() => {
-    console.log(`Conexión éxitosa a la base de datos: ${database_name}`)
-}
-).catch(err => {
-    console.log(`No se pudo conectar a BD, error: ${err}`)
+const sequelize   = new Sequelize( db_data.conf_db_name, db_data.conf_user, db_data.conf_password, { 
+    host: db_data.conf_host,
+    dialect: 'mysql',
+    port: db_data.conf_port,
+    dialectOptions: {
+        multipleStatements: true
+    }
 });
 
-module.exports = sequelize;
+module.exports  = sequelize;
