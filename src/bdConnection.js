@@ -13,4 +13,13 @@ const sequelize   = new Sequelize( db_data.conf_db_name, db_data.conf_user, db_d
     }
 });
 
+sequelize
+    .authenticate()
+    .then(() => {
+    console.log(`Conexión éxitosa a la base de datos: ${db_data.conf_db_name}`)
+}
+).catch(err => {
+    console.log(`No se pudo conectar a BD, error: ${err}`)
+});
+
 module.exports  = sequelize;

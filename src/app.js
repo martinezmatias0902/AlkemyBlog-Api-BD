@@ -91,10 +91,10 @@ app.delete('/api/blog/:id', (req, res) => {
 app.delete('/api/blog', (req, res) => {
     try {
         const allPostDeleted = querys.deleteAllPost();
-        if (postEliminado) {
-            res.status(200).json({ msg: "Post eliminado con éxito" })
+        if (allPostDeleted) {
+            res.status(200).json({ msg: "Todos los post fueron eliminados con éxito" })
         } else {
-            res.status(401).json({ msg: "Indique el ID del post a eliminar" })
+            res.status(401).json({ msg: "Error al eliminar los post" })
         }
     } catch (err) {
         res.status(500).json({ error: err })

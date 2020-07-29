@@ -29,7 +29,7 @@ const querys = {
     //Crear nuevo POSt
     createPost: async (title, text, fecha) => {
         try {
-            const nuevoPost = sequelize.query('INSERT INTO `blog-post` (title, text, fecha) VALUES (?, ?, ?)',
+            const nuevoPost = sequelize.query('INSERT INTO `blog-post` (title, text, timestamp) VALUES (?, ?, ?)',
             { replacements: [title, text, fecha] });
             return nuevoPost
         } catch (err) {
